@@ -6,7 +6,9 @@ export default class Login extends Component {
   
   constructor(props) {
     super(props);
-
+    if(localStorage.getItem('auth_token') ){
+		this.props.history.push('/dashboard');    	
+    }
     this.state = {
       email: "",
       password: ""
