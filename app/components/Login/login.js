@@ -7,7 +7,7 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     if(localStorage.getItem('auth_token') ){
-		this.props.history.push('/dashboard');    	
+		  this.props.history.push('/dashboard');    	
     }
     this.state = {
       email: "",
@@ -39,10 +39,13 @@ export default class Login extends Component {
 		    "password": this.state.password,
 		  }) 
 	}).then(data => {
-		this.props.history.push('/dashboard');
+		
 		return data.json()
 	}).then(data => {
 		localStorage.setItem('auth_token', data.token);
+    this.props.history.push('/dashboard');
+	}).catch(error=>{
+		alert("Error in authentication");
 	});
     
   }
