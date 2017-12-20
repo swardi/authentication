@@ -5,7 +5,7 @@ export default class App extends React.Component {
   render() {
     return (
      <div>
-        <h1>Login Application for i2x</h1>
+        <h3>Login Application for i2x</h3>
         <Routes />
       </div>
 

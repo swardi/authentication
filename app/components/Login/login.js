@@ -26,8 +26,8 @@ export default class Login extends Component {
   }
 
   handleSubmit (event) {
-  	event.preventDefault();
-
+  	event.preventDefault(); 
+    document.getElementById("loginBtnSubmit").disabled = true;
     fetch("https://i2x-challenge.herokuapp.com/core/login/", {
 		  method: 'POST',
 		  headers: {
@@ -43,6 +43,7 @@ export default class Login extends Component {
 		return data.json()
 	}).then(data => {
 		localStorage.setItem('auth_token', data.token);
+    document.getElementById("loginBtnSubmit").disabled = false;
     this.props.history.push('/dashboard');
 	}).catch(error=>{
 		alert("Error in authentication");
@@ -52,8 +53,11 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="col-md-6">
-        <form onSubmit={this.handleSubmit.bind(this)}>
+      <div className="col-lg-12">
+        <div className="panel panel-default">
+          <div className="panel-heading">Please enter your credentials</div>
+            <div className="panel-body">
+              <form onSubmit={this.handleSubmit.bind(this)}>
           <FormGroup controlId="email" bsSize="large">
             <ControlLabel>Email</ControlLabel>
             <FormControl
@@ -72,6 +76,7 @@ export default class Login extends Component {
             />
           </FormGroup>
           <Button
+            id="loginBtnSubmit"
             block
             bsSize="large"
             disabled={!this.validateForm()}
@@ -80,6 +85,9 @@ export default class Login extends Component {
             Login
           </Button>
         </form>
+            </div>
+      </div>
+        
       </div>
     );
   }
