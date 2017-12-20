@@ -19,3 +19,11 @@ yarn build
 
 ## Live link
 https://young-tor-54709.herokuapp.com/
+
+## Components list
+
+1) Login
+2) Dashboard
+3) StarRating
+4) AudioPlayer
+
